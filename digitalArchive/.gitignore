@@ -7,9 +7,12 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
+digitalArchive/node_modules/
+digitalBackend/node_modules/
+digitalArchive/dist
+digitalArchive/.env
+digitalbackend/.env
+
 *.local
 
 # Editor directories and files
