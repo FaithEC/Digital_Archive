@@ -1,0 +1,7 @@
+digitalArchive/node_modules
+server/node_modules
+
+digitalBackend/dist
+server/dist
+
+.env

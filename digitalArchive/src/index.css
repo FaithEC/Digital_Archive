@@ -1,0 +1,710 @@
+@import "tailwindcss";
+
+
+
+/* In Tailwind v4, we define our custom component classes like this */
+@layer components {
+
+  /* Header Styles */
+  .headerContainer {
+    @apply bg-indigo-900 shadow-sm border-b border-gray-100 ;
+    position: -webkit-sticky; /* Support for Safari */
+    position: sticky;         /* The magic line */
+    top: 0;                   /* Tells it WHERE to stick */
+    z-index: 1000;            /* Keeps it above page content */
+  }
+
+  .navWrapper {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .navContent {
+    @apply w-full py-6 flex items-center justify-between border-b border-indigo-500 lg:border-none;
+  }
+
+  .navLeft {
+    @apply flex items-center;
+  }
+
+  .logoLink {
+    @apply flex items-center;
+  }
+
+  .logoText {
+    @apply text-2xl font-bold text-white tracking-tight;
+  }
+
+  .navLinksDesktop {
+    @apply hidden ml-10 space-x-8 lg:block;
+  }
+
+  .navLink {
+    @apply text-base font-semibold text-gray-300 hover:text-white transition-colors;
+  }
+
+  .navRight {
+    @apply ml-10 space-x-4 flex items-center;
+  }
+
+  .btnLogin {
+    @apply inline-block bg-indigo-50 py-2 px-4 font-semibold border border-transparent rounded-md text-base font-medium text-indigo-700 hover:bg-indigo-800 hover:text-white transition-colors;
+  }
+
+  .btnSignup {
+    @apply inline-block bg-indigo-800 py-2 px-4 border font-semibold border-transparent rounded-md text-base font-medium text-white hover:bg-white hover:text-indigo-600 transition-colors shadow-sm;
+    
+  }
+
+  .navLinksMobile {
+    @apply py-4 flex flex-wrap justify-center space-x-6 lg:hidden;
+  }
+
+
+
+  /* Hero Section Styles */
+  .heroSection {
+    @apply py-16 bg-white overflow-hidden lg:py-24;
+  }
+
+  .heroContainer {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 lg:grid lg:grid-cols-2 lg:gap-8 items-center;
+  }
+
+  .heroContent {
+    @apply text-center lg:text-left;
+  }
+
+  .heroTitle {
+    @apply text-4xl font-extrabold text-gray-900 sm:text-5xl md:text-6xl tracking-tight;
+  }
+
+  .heroHighlight {
+    @apply text-indigo-900;
+  }
+
+  .heroDescription {
+    @apply mt-6 text-xl text-gray-500 max-w-2xl mx-auto lg:mx-0;
+  }
+
+  .heroActions {
+    @apply mt-10 flex flex-col sm:flex-row justify-center lg:justify-start gap-4;
+  }
+
+  .btnPrimary {
+    @apply inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-900 hover:bg-indigo-700 transition-colors shadow-md;
+  }
+
+  .btnSecondary {
+    @apply inline-flex items-center justify-center px-8 py-3 border border-gray-300 text-base font-medium rounded-md text-indigo-700 bg-white hover:bg-gray-50 transition-colors;
+  }
+
+  .heroImageWrapper {
+  @apply mt-12 lg:mt-0 flex justify-center items-center w-full overflow-hidden;
+}
+
+.heroImage {
+  @apply w-full max-w-md rounded-3xl shadow-2xl border border-indigo-100 
+         transition-transform duration-500 hover:scale-105;
+}
+  
+
+
+
+  /* File Upload & Card Styles */
+  .uploadSection {
+    @apply py-12 bg-white;
+  }
+
+  .uploadContainer {
+    @apply max-w-4xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .uploadTitle {
+    @apply text-2xl font-bold text-gray-900 mb-6;
+  }
+
+  .uploadInputWrapper {
+    @apply flex flex-col sm:flex-row items-center gap-4 p-6 border-2 border-dashed border-gray-200 rounded-xl bg-gray-50;
+  }
+
+  .fileInput {
+    @apply hidden;
+  }
+
+  .fileInputLabel {
+    @apply cursor-pointer bg-white px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50;
+  }
+
+  .btnUpload {
+    @apply inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors;
+  }
+
+  .sectionLabel {
+    @apply text-lg font-semibold text-gray-700 mt-8 mb-4;
+  }
+
+  .pendingList {
+    @apply bg-indigo-50 rounded-lg p-4 list-disc list-inside text-indigo-700 text-sm;
+  }
+
+  .cardsContainer {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4;
+  }
+
+  /* Card Component Styles */
+  .fileCard {
+    @apply flex items-center p-4 bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md cursor-pointer transition-all;
+  }
+
+  .fileCardIcon {
+    @apply text-3xl mr-4;
+  }
+
+  .fileCardTitle {
+    @apply text-sm font-bold text-gray-900 truncate max-w-[150px];
+  }
+
+  .fileCardDescription {
+    @apply text-xs text-gray-500;
+  }
+
+
+/* About Section Styles */
+  .aboutSection {
+    @apply py-24 bg-white;
+  }
+
+  .aboutContainer {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .aboutGrid {
+    @apply lg:grid lg:grid-cols-2 lg:gap-16 items-center;
+  }
+
+  .aboutContent {
+    @apply text-left;
+  }
+
+  .aboutSubtitle {
+    @apply text-base text-indigo-600 font-bold tracking-wide uppercase;
+  }
+
+  .aboutTitle {
+    @apply mt-2 text-3xl font-extrabold text-gray-900 sm:text-4xl mb-6;
+  }
+
+  .aboutText {
+    @apply text-lg text-gray-500 mb-6 leading-relaxed;
+  }
+
+  .aboutStats {
+    @apply grid grid-cols-3 gap-4 pt-8 border-t border-gray-100;
+  }
+
+  .statItem {
+    @apply flex flex-col;
+  }
+
+  .statNumber {
+    @apply text-2xl font-bold text-indigo-600;
+  }
+
+  .statLabel {
+    @apply text-sm text-gray-500;
+  }
+
+
+/* Features Section Styles */
+  .featuresSection {
+    @apply py-24 bg-indigo-900;
+  }
+
+  .featuresContainer {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .featuresHeader {
+    @apply text-center mb-16;
+  }
+
+  .featuresSubtitle {
+    @apply text-base text-white font-semibold tracking-wide uppercase font-serif;
+  }
+
+  .featuresTitle {
+    @apply mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl;
+  }
+
+  .featuresDescription {
+    @apply mt-4 max-w-2xl text-xl text-gray-300 lg:mx-auto;
+  }
+
+  .featuresGrid {
+    @apply grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3;
+  }
+
+  .featureCard {
+    @apply bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow;
+  }
+
+  .featureIconWrapper {
+    @apply flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white mb-6 text-2xl;
+  }
+
+  .featureName {
+    @apply text-lg font-medium text-gray-900;
+  }
+
+  .featureText {
+    @apply mt-2 text-base text-gray-500;
+  }
+
+
+/* Contact Section Styles */
+  .contactSection {
+    @apply py-24 bg-white;
+  }
+
+  .contactContainer {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .contactHeader {
+    @apply text-center mb-16;
+  }
+
+  .contactSubtitle {
+    @apply text-base text-indigo-600 font-semibold tracking-wide uppercase;
+  }
+
+  .contactTitle {
+    @apply mt-2 text-3xl font-extrabold text-gray-900 sm:text-4xl;
+  }
+
+  .contactDescription {
+    @apply mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto;
+  }
+
+  .contactGrid {
+    @apply grid grid-cols-1 lg:grid-cols-2 gap-16;
+  }
+
+  .contactInfo {
+    @apply space-y-8;
+  }
+
+  .infoItem {
+    @apply flex items-start space-x-4;
+  }
+
+  .infoIcon {
+    @apply text-2xl bg-indigo-50 p-3 rounded-lg;
+  }
+
+  .infoLabel {
+    @apply text-lg font-bold text-gray-900;
+  }
+
+  .infoText {
+    @apply text-gray-500;
+  }
+
+  .contactForm {
+    @apply bg-gray-50 p-8 rounded-2xl border border-gray-100 shadow-sm;
+  }
+
+  .formGroup {
+    @apply mb-6;
+  }
+
+  .formLabel {
+    @apply block text-sm font-medium text-gray-700 mb-2;
+  }
+
+  .formInput {
+    @apply w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all;
+  }
+
+  .formTextarea {
+    @apply w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all resize-none;
+  }
+
+  .btnSubmit {
+    @apply w-full bg-indigo-600 text-white py-3 px-6 rounded-md font-medium hover:bg-indigo-700 transition-colors shadow-md;
+  }
+
+
+/* Login Styles */
+
+.loginSection {
+  @apply py-24 min-h-screen flex items-center justify-center 
+  bg-gradient-to-br from-gray-50 via-white to-indigo-50;
+}
+
+.loginContainer { 
+  @apply w-full max-w-md px-4;
+}
+
+/* Card */
+.loginCard { 
+  @apply bg-white/80
+   backdrop-blur-xl p-8 rounded-3xl shadow-2xl 
+  border border-white/40 hover:shadow-indigo-100 
+  transition-all duration-300;
+}
+
+/* Titles */
+.loginTitle { 
+  @apply text-3xl font-extrabold text-gray-900 text-center mb-2 tracking-tight;
+}
+
+.loginSubtitle { 
+  @apply text-gray-500 text-center mb-8 text-sm;
+}
+
+/* Role Toggle */
+.roleToggle { 
+  @apply flex bg-gray-100/80 backdrop-blur-md p-1.5 rounded-xl mb-6 shadow-inner;
+}
+
+.roleBtn { 
+  @apply flex-1 py-2.5 text-sm font-semibold rounded-lg 
+  text-gray-500 hover:text-indigo-600 
+  transition-all duration-300;
+}
+
+.roleBtnActive { 
+  @apply bg-white text-indigo-600 shadow-md scale-105;
+}
+
+/* Inputs (add if you have them) */
+.loginInput {
+  @apply w-full px-4 py-3 mb-4 border border-gray-300 rounded-lg 
+  focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 
+  outline-none transition-all duration-200 shadow-sm;
+}
+
+/* Button */
+.btnLoginSubmit { 
+  @apply w-full bg-gradient-to-r from-indigo-600 to-indigo-900 
+  text-white py-3 rounded-xl font-semibold tracking-wide 
+  shadow-md hover:shadow-lg 
+  hover:from-indigo-700 hover:to-indigo-800 
+  active:scale-95 transition-all duration-200 mt-4;
+}
+
+.loginFooterText {
+    @apply mt-6 text-center text-sm text-gray-500;
+  }
+
+  .loginFooterLink {
+    @apply text-indigo-600 font-semibold hover:text-indigo-500 transition-colors;
+  }
+
+  /* Admin Dashboard Styles */
+.dashboardContainer { 
+  @apply flex min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100;
+}
+
+/* Sidebar */
+.dashboardSidebar { 
+  @apply w-20 md:w-64 min-h-screen bg-indigo-900 text-white p-4 md:p-6 flex flex-col sticky top-0;
+ 
+}
+
+.sidebarTitle { 
+  @apply text-lg md:text-2xl font-bold text-white mb-8 text-center md:text-left;
+}
+
+.sidebarNav { 
+  @apply space-y-3 flex flex-col gap-2;;
+}
+
+.sidebarLink { 
+  @apply flex items-center justify-center md:justify-start py-3 px-4 rounded-lg mb-2 transition-all text-indigo-100 hover:bg-indigo-800;
+}
+
+.sidebarLinkActive { 
+  @apply bg-white/20 backdrop-blur-md text-white shadow-md;
+}
+
+/* Hide text on mobile, show on desktop */
+.sidebarLinkText {
+  @apply hidden md:inline ml-3;
+}
+
+
+
+/* Main Content */
+.dashboardMain { 
+  @apply flex-1 p-8;
+}
+
+.dashboardHeader { 
+  @apply mb-10;
+}
+
+.mainTitle { 
+  @apply text-3xl font-extrabold text-gray-900 tracking-tight;
+}
+
+.mainSubtitle { 
+  @apply text-gray-500 mt-1 text-sm;
+}
+
+/* Cards */
+.uploadSectionCard { 
+  @apply bg-white/70 backdrop-blur-lg p-6 rounded-2xl shadow-lg 
+  border border-gray-200 hover:shadow-xl transition-all duration-300 mb-10;
+}
+
+
+/* Form */
+.formGrid { 
+  @apply grid grid-cols-1 md:grid-cols-3 gap-5 mb-6;
+}
+
+.formSelect { 
+  @apply w-full px-4 py-2.5 border border-gray-300 rounded-lg 
+  focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 
+  outline-none transition-all duration-200 shadow-sm;
+}
+
+/* Dropzone */
+.fileDropzone { 
+  @apply border-2 border-dashed border-gray-300 rounded-xl p-10 text-center 
+  mb-6 bg-gray-50 hover:bg-indigo-50 hover:border-indigo-400 
+  transition-all duration-300 cursor-pointer;
+}
+
+.hiddenInput { 
+  @apply hidden;
+}
+
+.dropzoneLabel { 
+  @apply cursor-pointer text-indigo-600 font-semibold hover:underline;
+}
+
+/* Button */
+.btnDashboardUpload { 
+  @apply bg-gradient-to-r from-indigo-600 to-indigo-700 text-white 
+  px-6 py-2.5 rounded-lg font-semibold shadow-md 
+  hover:from-indigo-700 hover:to-indigo-800 
+  hover:shadow-lg active:scale-95 
+  disabled:bg-gray-300 disabled:shadow-none 
+  transition-all duration-200;
+}
+
+/* Recent Uploads */
+.recentUploads { 
+  @apply mt-14;
+}
+
+.dashboardGrid { 
+  @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6;
+}
+
+
+
+/* Student Dashboard - Clean Styles */
+.studentDashboardContainer {
+  @apply min-h-screen bg-gray-50;
+}
+
+.studentHeroHeader {
+  @apply bg-indigo-900 pt-16 pb-24 px-4;
+}
+
+.studentHeroContent {
+  @apply max-w-4xl mx-auto text-center;
+}
+
+.studentHeroTitle {
+  @apply text-3xl md:text-4xl font-bold text-white mb-4;
+}
+
+.studentHeroSubtitle {
+  @apply text-indigo-200 mb-8;
+}
+
+.studentSearchWrapper {
+  @apply relative max-w-2xl mx-auto;
+}
+
+.studentSearchInput {
+  @apply w-full py-4 px-6 rounded-2xl shadow-2xl border-none focus:ring-4 focus:ring-indigo-500/50 text-lg outline-none;
+}
+
+.studentSearchIcon {
+  @apply absolute right-5 top-4 text-2xl;
+}
+
+.studentMainContent {
+  @apply max-w-7xl mx-auto px-4 -mt-12 pb-20;
+}
+
+.studentFilterBar {
+  @apply bg-white p-4 rounded-2xl shadow-lg border border-gray-100 flex flex-wrap gap-4 items-center justify-center mb-10;
+}
+
+.studentFilterSelect {
+  @apply bg-gray-50 border-none rounded-xl px-4 py-2 text-sm font-medium text-gray-700 outline-none focus:ring-2 focus:ring-indigo-500;
+}
+
+.studentResetBtn {
+  @apply text-indigo-600 text-sm font-bold hover:underline;
+}
+
+.studentLoadingWrapper {
+  @apply text-center py-20;
+}
+
+.studentLoadingSpinner {
+  @apply animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-900 mx-auto;
+}
+
+.studentLoadingText {
+  @apply mt-4 text-gray-500;
+}
+
+.studentGrid {
+  @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6;
+}
+
+.studentCard {
+  @apply bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 ;
+}
+
+.studentCardHeader {
+  @apply flex items-start justify-between mb-4;
+}
+
+.studentCardIcon {
+  @apply bg-indigo-50 p-3 rounded-xl text-2xl group-hover:bg-indigo-600 group-hover:text-white transition-colors;
+}
+
+.studentCardBadge {
+  @apply text-xs font-bold text-indigo-600 bg-indigo-50 px-2 py-1 rounded-md;
+}
+
+.studentCardTitle {
+  @apply text-lg font-bold text-gray-900 mb-1 truncate;
+}
+
+.studentCardDept {
+  @apply text-sm text-gray-500 mb-4;
+}
+
+.studentCardFooter {
+  @apply flex items-center justify-between pt-4 border-t border-gray-50;
+}
+
+.studentDownloadBtn {
+  @apply w-full bg-indigo-900 text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-indigo-800 transition-colors flex items-center justify-center gap-2;
+}
+
+.studentEmptyState {
+  @apply col-span-full text-center py-20 text-gray-400 text-lg;
+}
+
+
+
+
+ /* Usage Reports Styles */
+  .statsGrid {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12;
+  }
+
+  .statCard {
+    @apply bg-white p-6 rounded-2xl shadow-sm border border-gray-100;
+  }
+
+  .statHeader {
+    @apply flex justify-between items-center mb-4;
+  }
+
+  .statIcon {
+    @apply text-2xl bg-indigo-50 p-2 rounded-lg;
+  }
+
+  .statChange {
+    @apply text-xs font-bold text-green-500 bg-green-50 px-2 py-1 rounded-full;
+  }
+
+  .statValue {
+    @apply text-3xl font-bold text-gray-900 mb-1;
+  }
+
+  .statLabel {
+    @apply text-sm text-gray-500 font-medium;
+  }
+
+  .activitySection {
+    @apply bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden;
+  }
+
+  .tableWrapper {
+    @apply overflow-x-auto;
+  }
+
+  .activityTable {
+    @apply w-full text-left border-collapse;
+  }
+
+  .activityTable th {
+    @apply px-6 py-4 bg-gray-50 text-xs font-bold text-gray-400 uppercase tracking-wider border-b border-gray-100;
+  }
+
+  .activityTable td {
+    @apply px-6 py-4 border-b border-gray-50 text-sm text-gray-600;
+  }
+
+  .actionBadge {
+    @apply px-2 py-1 rounded-md text-xs font-bold;
+  }
+
+  .actionBadge.downloaded { @apply bg-blue-50 text-blue-600; }
+  .actionBadge.uploaded { @apply bg-green-50 text-green-600; }
+  .actionBadge.registered { @apply bg-purple-50 text-purple-600; }
+
+
+ 
+
+
+
+ /* ... existing styles ... */
+
+  .btnLogout {
+    @apply inline-block bg-red-50 py-2 px-4 border border-red-200 rounded-md text-base font-medium text-red-600 hover:bg-red-100 transition-colors shadow-sm;
+  }
+
+
+  /* Footer Styles */
+  .footerContainer {
+    @apply bg-white border-t border-gray-100 py-8 mt-auto;
+  }
+
+  .footerContent {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4;
+  }
+
+  .footerText {
+    @apply text-gray-500 text-sm font-medium;
+  }
+
+  .footerLinks {
+    @apply flex space-x-6;
+  }
+
+  .footerLink {
+    @apply text-gray-400 hover:text-indigo-600 text-sm transition-colors;
+  }
+
+  /* Global Body Styles */
+  body {
+    @apply bg-gray-50 text-gray-900;
+    font-family: 'Inter', sans-serif;
+  }
+
+}
