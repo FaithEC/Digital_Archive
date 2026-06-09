@@ -42,7 +42,7 @@ const UsageReports = () => {
     <div className="dashboardContainer">
       {/* Sidebar */}
       <aside className="dashboardSidebar">
-        <h2 className="sidebarTitle">NACOS</h2>
+        <h2 className="sidebarTitle">CSC</h2>
         <nav className="sidebarNav">
           <Link to="/adminDashboard" className="sidebarLink">
             <span>📤</span><span className="sidebarLinkText">Upload</span>
@@ -59,7 +59,7 @@ const UsageReports = () => {
       <main className="dashboardMain">
         <header className="dashboardHeader">
           <h1 className="mainTitle">System Analytics</h1>
-          <p className="mainSubtitle">Overview of the NACOS Digital Archive usage</p>
+          <p className="mainSubtitle">Overview of the CSC Digital Archive usage</p>
         </header>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">

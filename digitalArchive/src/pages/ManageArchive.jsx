@@ -26,7 +26,7 @@ const ManageArchive = () => {
   };
 
   const handleDelete = async (id) => {
-    if (window.confirm("⚠️ Are you sure? This will permanently remove this material from the NACOS Archive.")) {
+    if (window.confirm("⚠️ Are you sure? This will permanently remove this material from the CSC Archive.")) {
       try {
         await axios.delete(`https://digital-archive-1znr.onrender.com/api/materials/${id}` );
         setMaterials(materials.filter(item => item._id !== id));
@@ -72,7 +72,7 @@ const ManageArchive = () => {
     <div className="dashboardContainer">
       {/* Sidebar */}
       <aside className="dashboardSidebar">
-        <h2 className="sidebarTitle">NACOS</h2>
+        <h2 className="sidebarTitle">CSC</h2>
         <nav className="sidebarNav">
           <Link to="/adminDashboard" className="sidebarLink">
             <span>📤</span><span className="sidebarLinkText">Upload</span>
@@ -90,7 +90,7 @@ const ManageArchive = () => {
       <main className="dashboardMain">
         <header className="dashboardHeader">
           <h1 className="mainTitle">Manage Archive</h1>
-          <p className="mainSubtitle">Edit or remove materials from the NACOS Digital Archive</p>
+          <p className="mainSubtitle">Edit or remove materials from the CSC Digital Archive</p>
         </header>
 
         <section className="manageSection">

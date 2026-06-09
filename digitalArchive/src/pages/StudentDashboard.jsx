@@ -66,7 +66,7 @@ const StudentDashboard = () => {
     <div className="dashboardMain">
         <header className="studentHeroHeader">
           <div className="studentHeroContent">
-            <h1 className="studentHeroTitle">NACOS Digital Archive</h1>
+            <h1 className="studentHeroTitle">CSC Digital Archive</h1>
             <p className="studentHeroSubtitle">Access lecture notes and academic resources</p>
             <div className="studentSearchWrapper">
               <input

@@ -25,7 +25,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/materials', materialRoutes);
 
 app.get('/', (req, res) => {
-  res.send('NACOS Digital Archive API is running...');
+  res.send('CSC Digital Archive API is running...');
 });
 
 const PORT = process.env.PORT || 5000;

@@ -31,7 +31,7 @@ const StudentSidebar = ({ children }) => {
           {sidebarOpen ? '◀' : '▶'}
         </button>
 
-        {sidebarOpen && <h2 className="sidebarTitle">NACOS</h2>}
+        {sidebarOpen && <h2 className="sidebarTitle">CSC</h2>}
 
         <nav className="sidebarNav">
           {navLinks.map((link) => (

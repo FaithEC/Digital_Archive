@@ -28,7 +28,7 @@ const Header = () => {
         <div className="navContent">
           <div className="navLeft">
             <Link to="/" className="logoLink">
-              <span className="logoText">FOCA Archive</span>
+              <span className="logoText">CSC Archive</span>
             </Link>
             <div className="navLinksDesktop">
               {navLinks.map((link) => (

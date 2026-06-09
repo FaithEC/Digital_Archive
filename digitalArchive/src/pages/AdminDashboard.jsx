@@ -103,7 +103,7 @@ const AdminDashboard = () => {
   return (
     <div className="dashboardContainer">
       <aside className="dashboardSidebar">
-        <h2 className="sidebarTitle">NACOS</h2>
+        <h2 className="sidebarTitle">CSC</h2>
         <nav className="sidebarNav">
           <Link to="/adminDashboard" className="sidebarLink sidebarLinkActive">
             <span>📤</span><span className="sidebarLinkText">Upload</span>
@@ -123,7 +123,7 @@ const AdminDashboard = () => {
       <main className="dashboardMain">
         <header className="dashboardHeader">
           <h1 className="mainTitle">Upload New Material</h1>
-          <p className="mainSubtitle">Add academic resources to the NACOS Digital Archive</p>
+          <p className="mainSubtitle">Add academic resources to the CSC Digital Archive</p>
         </header>
 
         <section className="uploadSectionCard">
@@ -169,7 +169,7 @@ const AdminDashboard = () => {
                 onChange={(e) => setCategory({...category, dept: e.target.value})}
                 required
               >
-                <option value="">Select NACOS Dept</option>
+                <option value="">Select CSC Dept</option>
                 <option value="Computer Science">Computer Science</option>
                 <option value="Software Engineering">Software Engineering</option>
                 <option value="Cyber Security">Cyber Security</option>

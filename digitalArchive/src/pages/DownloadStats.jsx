@@ -21,7 +21,7 @@ const DownloadStats = () => {
       <main className="dashboardMain fullWidth">
         <header className="dashboardHeader">
           <h1 className="mainTitle">Download Statistics</h1>
-          <p className="mainSubtitle">Track the most accessed materials in the NACOS Archive</p>
+          <p className="mainSubtitle">Track the most accessed materials in the CSC Archive</p>
         </header>
 
         {/* Summary Cards */}
