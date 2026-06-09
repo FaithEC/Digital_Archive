@@ -44,7 +44,7 @@ const Header = () => {
               <div className="flex items-center space-x-4">
                 {/* NEW: Profile Link for Desktop */}
                 <Link to="/updateProfile" className="navLink">
-                  👤 Profile
+                  Profile
                 </Link>
                 <button onClick={handleLogout} className="btnLogout">
                   Logout

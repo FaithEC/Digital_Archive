@@ -1,5 +1,5 @@
 import React from 'react';
-import heroImg from '../assets/img/heroImg.jpg';
+import heroImg from '../assets/img/digital illus.png';
 import {Link} from 'react-router-dom';
 
 

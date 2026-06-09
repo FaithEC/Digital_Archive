@@ -32,7 +32,7 @@ const userSchema = new mongoose.Schema({
   }
 });
 
-// ✅ MODERN/CORRECT WAY
+
 userSchema.pre('save', async function () {
   // If the password hasn't changed, just stop here and save
   if (!this.isModified('password')) {

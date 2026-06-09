@@ -34,7 +34,7 @@ const Contact = () => {
         <div className="contactGrid">
           <div className="contactInfo">
             <div className="infoItem">
-              <span className="infoIcon">📍</span>
+              <span className="infoIcon">🌐</span>
               <div>
                 <h4 className="infoLabel">Location</h4>
                 <p className="infoText">Edo State University, Computer Science Dept.</p>

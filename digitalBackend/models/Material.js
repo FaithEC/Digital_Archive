@@ -9,10 +9,21 @@ const materialSchema = new mongoose.Schema({
     required: true,
     enum: ['Computer Science', 'Software Engineering', 'Cyber Security', 'Information Technology']
   },
+  materialType: { type: String, enum: ['Lecture Note', 'Past Question'], default: 'Lecture Note' },
+  fileName: { type: String },
+  fileSize: { type: String },
+  fileType: { type: String },
+  downloadCount: { type: Number, default: 0 },
   level: { type: String, required: true },
   year: { type: String, required: true },
   uploadedBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: false },
-  createdAt: { type: Date, default: Date.now }
+  createdAt: { type: Date, default: Date.now },
+  reports: [
+  {
+    reason: { type: String },
+    reportedAt: { type: Date, default: Date.now }
+  }
+]
 });
 
 module.exports = mongoose.model('Material', materialSchema);

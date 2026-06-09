@@ -1,15 +1,10 @@
 const User = require('../models/User');
 const jwt = require('jsonwebtoken');
 
-// Helper function to create a JWT Token
 const generateToken = (id) => {
-  return jwt.sign({ id }, process.env.JWT_SECRET, {
-    expiresIn: '30d',
-  });
+  return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: '30d' });
 };
 
-// @desc    Register a new user
-// @route   POST /api/auth/register
 exports.registerUser = async (req, res) => {
   try {
     const { fullName, email, password, role } = req.body;
@@ -44,8 +39,6 @@ exports.registerUser = async (req, res) => {
 
 
 
-// @desc    Login user
-// @route   POST /api/auth/login
 exports.loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -67,13 +60,9 @@ exports.loginUser = async (req, res) => {
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
-};
-
-
-// @desc    Update user profile
-// @route   PUT /api/auth/profile
+}
 exports.updateProfile = async (req, res) => {
-  console.log("Update request received for ID:", req.body.userId); // This will show in your terminal
+  console.log("Update request received for ID:", req.body.userId); // erorr for my terminal
   try {
     const { userId, fullName, email } = req.body;
 
@@ -101,7 +90,7 @@ exports.updateProfile = async (req, res) => {
       role: updatedUser.role,
     });
   } catch (error) {
-    console.error("DETAILED BACKEND ERROR:", error); // This is the most important line!
+    console.error("DETAILED BACKEND ERROR:", error); 
     res.status(500).json({ message: 'Server Error', error: error.message });
   }
 };

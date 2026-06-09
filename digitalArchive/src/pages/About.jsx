@@ -1,4 +1,5 @@
 import React from 'react';
+import aboutImg from '../assets/img/about illu.png';
 
 const About = () => {
   return (
@@ -6,10 +7,7 @@ const About = () => {
       <div className="aboutContainer">
         <div className="aboutGrid">
           <div className="aboutImageWrapper">
-            {/* A placeholder for a "team" or "mission" illustration */}
-            <div className="aboutPlaceholder">
-              <span className="aboutPlaceholderIcon">🎓</span>
-            </div>
+            <img src={aboutImg} alt="About Us" className="aboutImage" />
           </div>
           <div className="aboutContent">
             <h2 className="aboutSubtitle">Our Mission</h2>

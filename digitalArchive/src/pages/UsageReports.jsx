@@ -6,22 +6,30 @@ const UsageReports = () => {
   const [stats, setStats] = useState({
     totalMaterials: 0,
     departments: 0,
-    recentUploads: 0
+    recentUploads: 0,
+    totalDownloads: 0,
+    totalReports: 0
   });
 
-  useEffect(() => {
+    useEffect(() => {
     const fetchStats = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/materials' );
+        const response = await axios.get('http://localhost:5000/api/materials');
         const data = response.data;
-        
-        // Simple logic to calculate stats from the materials list
+
         const uniqueDepts = [...new Set(data.map(item => item.department))].length;
-        
+        const totalDownloads = data.reduce((sum, item) => sum + (item.downloadCount || 0), 0);
+        const totalReports = data.reduce((sum, item) => sum + (item.reports?.length || 0), 0);
+        const oneWeekAgo = new Date();
+        oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
+        const recentUploads = data.filter(item => new Date(item.createdAt) > oneWeekAgo).length;
+
         setStats({
           totalMaterials: data.length,
           departments: uniqueDepts,
-          recentUploads: data.slice(0, 5).length // Last 5 uploads
+          recentUploads,
+          totalDownloads,
+          totalReports
         });
       } catch (error) {
         console.error("Error fetching stats:", error);
@@ -67,6 +75,16 @@ const UsageReports = () => {
             <p className="text-sm text-gray-500 font-medium uppercase">New This Week</p>
             <h3 className="text-3xl font-bold text-gray-900">{stats.recentUploads}</h3>
           </div>
+        </div>
+
+        <div className="bg-white p-6 rounded-2xl shadow-sm border-l-4 border-blue-500">
+          <p className="text-sm text-gray-500 font-medium uppercase">Total Downloads</p>
+          <h3 className="text-3xl font-bold text-gray-900">{stats.totalDownloads || 0}</h3>
+        </div>
+
+        <div className="bg-white p-6 rounded-2xl shadow-sm border-l-4 border-red-500">
+          <p className="text-sm text-gray-500 font-medium uppercase">Reported Files</p>
+          <h3 className="text-3xl font-bold text-gray-900">{stats.totalReports || 0}</h3>
         </div>
 
         <section className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">

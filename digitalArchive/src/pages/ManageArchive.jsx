@@ -41,6 +41,20 @@ const ManageArchive = () => {
     setCurrentMaterial({ ...material });
     setIsEditing(true);
   };
+  const [showReports, setShowReports] = useState(false);
+
+    // Get materials that have reports
+    const reportedMaterials = materials.filter(item => item.reports && item.reports.length > 0);
+
+    const handleDismissReport = async (id) => {
+  try {
+        await axios.put(`http://localhost:5000/api/materials/${id}/dismissReports`);
+        setMaterials(materials.map(m => m._id === id ? { ...m, reports: [] } : m));
+      } catch (error) {
+        alert("Failed to dismiss report.");
+      }
+    };
+
 
   const handleUpdate = async (e) => {
     e.preventDefault();
@@ -125,6 +139,73 @@ const ManageArchive = () => {
             </div>
           )}
         </section>
+
+        {/* Reported Files Section */}
+<section className="manageSection mt-8">
+  <div className="flex items-center justify-between mb-4">
+    <div>
+      <h2 className="mainTitle">Reported Files</h2>
+      <p className="mainSubtitle">Files flagged by students</p>
+    </div>
+    <button
+      onClick={() => setShowReports(!showReports)}
+      className="bg-red-50 text-red-600 px-4 py-2 rounded-lg text-sm font-medium hover:bg-red-100"
+    >
+      🚩 {reportedMaterials.length} Report{reportedMaterials.length !== 1 ? 's' : ''} {showReports ? '▲' : '▼'}
+    </button>
+  </div>
+
+  {showReports && (
+    reportedMaterials.length === 0 ? (
+      <p className="text-center py-6 text-gray-400">No reported files at the moment.</p>
+    ) : (
+      <div className="overflow-x-auto bg-white rounded-xl shadow-sm border border-gray-100">
+        <table className="min-w-full divide-y divide-gray-200">
+          <thead className="bg-red-50">
+            <tr>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Material</th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Reports</th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+            </tr>
+          </thead>
+          <tbody className="bg-white divide-y divide-gray-200">
+            {reportedMaterials.map((item) => (
+              <tr key={item._id} className="hover:bg-gray-50">
+                <td className="px-6 py-4">
+                  <div className="text-sm font-medium text-gray-900">{item.title}</div>
+                  <div className="text-xs text-gray-400">{item.department} | {item.level}L | {item.year}</div>
+                </td>
+                <td className="px-6 py-4">
+                  <ul className="space-y-1">
+                    {item.reports.map((report, index) => (
+                      <li key={index} className="text-xs text-red-600 bg-red-50 px-2 py-1 rounded">
+                        "{report.reason}" — {new Date(report.reportedAt).toLocaleDateString()}
+                      </li>
+                    ))}
+                  </ul>
+                </td>
+                <td className="px-6 py-4 space-x-3">
+                  <button
+                    onClick={() => handleDelete(item._id)}
+                    className="text-red-600 hover:text-red-900 bg-red-50 px-3 py-1 rounded-md text-sm"
+                  >
+                    🗑️ Delete File
+                  </button>
+                  <button
+                    onClick={() => handleDismissReport(item._id)}
+                    className="text-gray-600 hover:text-gray-900 bg-gray-50 px-3 py-1 rounded-md text-sm"
+                  >
+                    ✅ Dismiss
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    )
+  )}
+</section>
 
         {/* Edit Modal */}
         {isEditing && (
