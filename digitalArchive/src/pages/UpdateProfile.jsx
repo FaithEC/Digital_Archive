@@ -24,7 +24,7 @@ const UpdateProfile = () => {
   const handleUpdate = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.put('http://localhost:5000/api/auth/profile', {
+      const response = await axios.put('https://digital-archive-1znr.onrender.com/api/auth/profile', {
         userId: userInfo._id || userInfo.id, // Handle both _id and id cases  
         fullName: formData.fullName,
         email: formData.email,

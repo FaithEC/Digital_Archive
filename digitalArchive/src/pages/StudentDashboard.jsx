@@ -12,7 +12,7 @@ const StudentDashboard = () => {
   useEffect(() => {
     const fetchMaterials = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/materials');
+        const response = await axios.get('https://digital-archive-1znr.onrender.com/api/materials');
         setMaterials(response.data);
         setLoading(false);
       } catch (error) {
@@ -35,7 +35,7 @@ const StudentDashboard = () => {
 
   const handleDownload = async (fileUrl, fileName, itemId) => {
     try {
-      await axios.put(`http://localhost:5000/api/materials/${itemId}/download`);
+      await axios.put(`https://digital-archive-1znr.onrender.com/api/materials/${itemId}/download`);
       setMaterials(prev => prev.map(m =>
         m._id === itemId ? { ...m, downloadCount: (m.downloadCount || 0) + 1 } : m
       ));
@@ -43,7 +43,7 @@ const StudentDashboard = () => {
       console.error('Could not update download count:', error);
     }
     const link = document.createElement('a');
-    link.href = `http://localhost:5000/${fileUrl}`;
+    link.href = `https://digital-archive-1znr.onrender.com/${fileUrl}`;
     link.download = fileName;
     document.body.appendChild(link);
     link.click();
@@ -54,7 +54,7 @@ const StudentDashboard = () => {
     const reason = window.prompt(`Why are you reporting "${itemTitle}"?\n\nExamples: Wrong file, Corrupted file, Irrelevant content`);
     if (!reason) return;
     try {
-      await axios.post(`http://localhost:5000/api/materials/${itemId}/report`, { reason });
+      await axios.post(`https://digital-archive-1znr.onrender.com/api/materials/${itemId}/report`, { reason });
       alert('Report submitted. Thank you!');
     } catch (error) {
       alert('Could not submit report. Please try again.');

@@ -16,7 +16,7 @@ const ManageArchive = () => {
 
   const fetchMaterials = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/materials' );
+      const response = await axios.get('https://digital-archive-1znr.onrender.com/api/materials' );
       setMaterials(response.data);
       setLoading(false);
     } catch (error) {
@@ -28,7 +28,7 @@ const ManageArchive = () => {
   const handleDelete = async (id) => {
     if (window.confirm("⚠️ Are you sure? This will permanently remove this material from the NACOS Archive.")) {
       try {
-        await axios.delete(`http://localhost:5000/api/materials/${id}` );
+        await axios.delete(`https://digital-archive-1znr.onrender.com/api/materials/${id}` );
         setMaterials(materials.filter(item => item._id !== id));
         alert("🗑️ Material deleted successfully!");
       } catch (error) {
@@ -48,7 +48,7 @@ const ManageArchive = () => {
 
     const handleDismissReport = async (id) => {
   try {
-        await axios.put(`http://localhost:5000/api/materials/${id}/dismissReports`);
+        await axios.put(`https://digital-archive-1znr.onrender.com/api/materials/${id}/dismissReports`);
         setMaterials(materials.map(m => m._id === id ? { ...m, reports: [] } : m));
       } catch (error) {
         alert("Failed to dismiss report.");
@@ -59,7 +59,7 @@ const ManageArchive = () => {
   const handleUpdate = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`http://localhost:5000/api/materials/${currentMaterial._id}`, currentMaterial );
+      await axios.put(`https://digital-archive-1znr.onrender.com/api/materials/${currentMaterial._id}`, currentMaterial );
       alert("✅ Material updated successfully!");
       setIsEditing(false);
       fetchMaterials(); // Refresh the list

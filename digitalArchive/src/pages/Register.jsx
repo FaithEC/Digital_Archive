@@ -28,7 +28,7 @@
 //     }
 //     try {
 //     // Send data to your backend API
-//     const response = await axios.post('http://localhost:5000/api/auth/register', {
+//     const response = await axios.post('https://digital-archive-1znr.onrender.com/api/auth/register', {
 //       fullName: formData.fullName,
 //       email: formData.email,
 //       password: formData.password,
@@ -223,7 +223,7 @@ const Register = () => {
 
     setLoading(true);
     try {
-      const response = await axios.post('http://localhost:5000/api/auth/register', {
+      const response = await axios.post('https://digital-archive-1znr.onrender.com/api/auth/register', {
         fullName: formData.fullName,
         email: formData.email,
         password: formData.password,

@@ -18,7 +18,7 @@ const AdminDashboard = () => {
   useEffect(() => {
     const fetchMaterials = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/materials');
+        const response = await axios.get('https://digital-archive-1znr.onrender.com/api/materials');
         setUploadedMaterials(response.data);
       } catch (error) {
         console.error("Error fetching materials:", error);
@@ -76,7 +76,7 @@ const AdminDashboard = () => {
 
     // Make the API call to upload the file
     try {
-      const response = await axios.post('http://localhost:5000/api/materials/upload', formData, {
+      const response = await axios.post('https://digital-archive-1znr.onrender.com/api/materials/upload', formData, {
         onUploadProgress: (progressEvent) => {
           const percent = Math.round((progressEvent.loaded * 100) / progressEvent.total);
           setUploadProgress(percent);

@@ -14,7 +14,7 @@ const UsageReports = () => {
     useEffect(() => {
     const fetchStats = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/materials');
+        const response = await axios.get('https://digital-archive-1znr.onrender.com/api/materials');
         const data = response.data;
 
         const uniqueDepts = [...new Set(data.map(item => item.department))].length;
