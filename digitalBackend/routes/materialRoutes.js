@@ -1,24 +1,28 @@
 const express = require('express');
 const router = express.Router();
 const multer = require('multer');
-const fs = require('fs');
-const path = require('path');
+const { CloudinaryStorage } = require('multer-storage-cloudinary');
+const cloudinary = require('cloudinary').v2;
 const Material = require('../models/Material');
 const { uploadMaterial, getMaterials } = require('../controllers/materialController');
 
-//
-const uploadDir = path.join(__dirname, '../uploads');
-if (!fs.existsSync(uploadDir)) {
-  fs.mkdirSync(uploadDir, { recursive: true });
-}
-
-//
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => cb(null, 'uploads/'),
-  filename: (req, file, cb) => cb(null, `${Date.now()}-${file.originalname}`)
+// Cloudinary config
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-// File type filter
+// Cloudinary storage
+const storage = new CloudinaryStorage({
+  cloudinary,
+  params: {
+    folder: 'nacos-archive',
+    allowed_formats: ['pdf', 'doc', 'docx', 'ppt', 'pptx'],
+    resource_type: 'raw'
+  }
+});
+
 const fileFilter = (req, file, cb) => {
   const allowedTypes = [
     'application/pdf',
@@ -34,10 +38,10 @@ const fileFilter = (req, file, cb) => {
   }
 };
 
-const upload = multer({ 
+const upload = multer({
   storage,
   fileFilter,
-  limits: { fileSize: 10 * 1024 * 1024 } // 10MB
+  limits: { fileSize: 10 * 1024 * 1024 }
 });
 
 router.post('/upload', (req, res, next) => {
@@ -53,7 +57,6 @@ router.post('/upload', (req, res, next) => {
 
 router.get('/', getMaterials);
 
-// Track downloads
 router.put('/:id/download', async (req, res) => {
   try {
     const material = await Material.findByIdAndUpdate(
@@ -72,8 +75,10 @@ router.delete('/:id', async (req, res) => {
     const material = await Material.findById(req.params.id);
     if (!material) return res.status(404).json({ message: 'Material not found' });
 
-    const filePath = path.join(__dirname, '..', material.fileUrl);
-    if (fs.existsSync(filePath)) fs.unlinkSync(filePath);
+    // Delete from Cloudinary
+    if (material.cloudinaryId) {
+      await cloudinary.uploader.destroy(material.cloudinaryId, { resource_type: 'raw' });
+    }
 
     await material.deleteOne();
     res.json({ message: 'Material removed successfully' });
@@ -116,16 +121,16 @@ router.post('/:id/report', async (req, res) => {
 });
 
 router.put('/:id/dismissReports', async (req, res) => {
-    try {
-      const material = await Material.findByIdAndUpdate(
-        req.params.id,
-        { $set: { reports: [] } },
-        { new: true }
-      );
-      res.json(material);
-    } catch (error) {
-      res.status(500).json({ message: 'Server Error', error });
-    }
-  });
+  try {
+    const material = await Material.findByIdAndUpdate(
+      req.params.id,
+      { $set: { reports: [] } },
+      { new: true }
+    );
+    res.json(material);
+  } catch (error) {
+    res.status(500).json({ message: 'Server Error', error });
+  }
+});
 
 module.exports = router;

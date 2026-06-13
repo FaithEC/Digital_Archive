@@ -13,6 +13,7 @@ const materialSchema = new mongoose.Schema({
   fileName: { type: String },
   fileSize: { type: String },
   fileType: { type: String },
+  cloudinaryId: { type: String },
   downloadCount: { type: Number, default: 0 },
   level: { type: String, required: true },
   year: { type: String, required: true },
