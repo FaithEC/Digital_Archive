@@ -22,6 +22,7 @@ const storage = new CloudinaryStorage({
       resource_type: 'raw',
       public_id: file.originalname, // 👈 keeps the original filename with extension
       overwrite: true
+    };
   }
 });
 
