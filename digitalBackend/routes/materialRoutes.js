@@ -16,10 +16,12 @@ cloudinary.config({
 // Cloudinary storage
 const storage = new CloudinaryStorage({
   cloudinary,
-  params: {
-    folder: 'nacos-archive',
-    allowed_formats: ['pdf', 'doc', 'docx', 'ppt', 'pptx'],
-    resource_type: 'raw'
+  params: async (req, file) => {
+    return {
+      folder: 'nacos-archive',
+      resource_type: 'raw',
+      public_id: file.originalname, // 👈 keeps the original filename with extension
+      overwrite: true
   }
 });
 
