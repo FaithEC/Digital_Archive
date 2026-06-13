@@ -21,7 +21,9 @@ const storage = new CloudinaryStorage({
       folder: 'nacos-archive',
       resource_type: 'raw',
       public_id: file.originalname, // 👈 keeps the original filename with extension
-      overwrite: true
+      overwrite: true,
+       type: 'upload', // 👈 makes it publicly accessible
+      access_mode: 'public' 
     };
   }
 });
