@@ -42,12 +42,14 @@ const StudentDashboard = () => {
     } catch (error) {
       console.error('Could not update download count:', error);
     }
+
     const link = document.createElement('a');
-    link.href = `https://digital-archive-1znr.onrender.com/${fileUrl}`;
-    link.download = fileName;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+  link.href = fileUrl;  // 👈 directly use fileUrl, no prefix needed
+  link.download = fileName;
+  link.target = '_blank';
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
   };
 
   const handleReport = async (itemId, itemTitle) => {
