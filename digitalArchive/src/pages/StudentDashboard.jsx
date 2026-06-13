@@ -44,12 +44,13 @@ const StudentDashboard = () => {
     }
 
     const link = document.createElement('a');
-  link.href = fileUrl;  // 👈 directly use fileUrl, no prefix needed
-  link.download = fileName;
-  link.target = '_blank';
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
+
+    const downloadUrl = fileUrl.replace('/upload/', '/upload/fl_attachment/');
+    link.href = downloadUrl;
+    link.target = '_blank';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   const handleReport = async (itemId, itemTitle) => {
