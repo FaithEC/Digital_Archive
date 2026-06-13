@@ -43,14 +43,8 @@ const StudentDashboard = () => {
       console.error('Could not update download count:', error);
     }
 
-    const link = document.createElement('a');
+    window.open(fileUrl, '_blank');
 
-    const downloadUrl = fileUrl.replace('/upload/', '/upload/fl_attachment/');
-    link.href = downloadUrl;
-    link.target = '_blank';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
   };
 
   const handleReport = async (itemId, itemTitle) => {
